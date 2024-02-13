@@ -5,6 +5,9 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
+smart_help_text = "<p><strong>Suggested questions to ask your doctor:</strong></p><p></p><ul><li>Can you explain more about the <strong>NHS breast cancer screening program</strong> and how it works?</li><li>What are the <strong>potential risks and benefits</strong> of the <strong>mammogram and needle test</strong>?</li><li>What happens if the results of the <strong>mammogram and needle test</strong> are positive?</li><li>Are there any <strong>lifestyle changes or precautions</strong> I should take while waiting for the screening appointment?</li><li>Can you recommend any <strong>resources or support groups</strong> for breast cancer patients and survivors?</li><li>What are the <strong>treatment options</strong> for breast cancer if the screening results are positive?</li><li>How long does the treatment usually take and what are the <strong>potential side effects</strong>?</li><li>Are there any <strong>alternative or complementary therapies</strong> that can be used in conjunction with conventional treatments?</li></ul>"
+screening_summary_text = "<p><strong>Summary:</strong> The doctor has recommended the patient to attend the NHS breast cancer screening program or the Bupa breast cancer screening service due to the symptoms that could be of breast cancer. The screening process involves a mammogram, which is a breast X-ray, and might be uncomfortable but shouldn't hurt. The results should take about a week and the patient can talk to the mammography if they have any questions.</p><p><strong>Next key actions:</strong> The patient should attend the NHS breast cancer screening program or the Bupa breast cancer screening service. The screening process involves a mammogram, which is a breast X-ray, and might be uncomfortable but shouldn't hurt. The results should take about a week and the patient can talk to the mammography if they have any questions.</p>"
+
 def read_transcription():
     try:
         with open('audio_transcription.txt', 'r') as file:
@@ -37,9 +40,7 @@ def find_out_more():
 @app.route('/doctor-ai')
 def doctor_ai():
     ambient_listening_text = read_transcription()
-    smart_help_text = "<ul><li>Advice 1</li><li>Advice 2</li><li>Advice 3</li></ul>"
-    screening_summary_text = smart_help_text
-    #screening_summary_text = format_html_list(["Screening Item 1", "Screening Item 2", "Screening Item 3"])
+
     return render_template('doctor_ai.html',
                            ambient_listening_text=ambient_listening_text,
                            smart_help_text=smart_help_text,

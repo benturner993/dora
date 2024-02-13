@@ -11,8 +11,8 @@
             <div style="display: inline-block; border-radius: 50%; overflow: hidden; border: 5px solid white;">
                 <img src="{{ url_for('static', filename='maria.png') }}" alt="Maria" style="width: 200px; border-radius: 50%;">
             </div>
-            <p style="margin-top: 20px;">Hi, I'm Maria from the DORA team and I'm going to be with you every step of your appointment today.</p>
-            <div style="margin-top: 100px;">
+            <p style="margin-top: 20px; text-align: center;">Hi, I'm Maria from the DORA team and I'm going to be with you every step of your appointment today.</p>
+            <div style="margin-top: 100px; text-align: center;">
                 <a href="#" id="ambient-listening-btn" style="text-decoration: none;">
                     <button style="font-family: 'Montserrat', sans-serif; background-color: #0079c8; color: white; border: none; padding: 10px 30px; border-radius: 5px; margin-right: 20px;">Ambient Listening</button>
                 </a>
@@ -23,16 +23,17 @@
                     <button style="font-family: 'Montserrat', sans-serif; background-color: #0079c8; color: white; border: none; padding: 10px 30px; border-radius: 5px;">Screening Summary</button>
                 </a>
             </div>
-            <div id="message-box" style="display: none; margin-top: 20px; background-color: #f0f0f0; padding: 10px; border-radius: 5px;">
+            <div id="message-box" style="display: none; margin-top: 20px; background-color: #f0f0f0; padding: 10px; border-radius: 5px; text-align: left;">
                 <!-- Adjusted margin for list items -->
                 <ul id="message" style="padding: 0;">
                     <li style="margin-top: 5px;">{{ smart_help_text | safe }}</li>
                 </ul>
             </div>
-            <div id="summary-message-box" style="display: none; margin-top: 20px; background-color: #f0f0f0; padding: 10px; border-radius: 5px;">
+            <div id="summary-message-box" style="display: none; margin-top: 20px; background-color: #f0f0f0; padding: 10px; border-radius: 5px; text-align: left;">
                 <!-- Adjusted margin for list items -->
                 {{ screening_summary_text | safe }}
             </div>
+            <div id="white-box" style="display: none; margin-top: 20px; height: 50px; background-color: white;"></div>
         </div>
     </div>
 
@@ -46,30 +47,32 @@
         });
 
         document.getElementById('screening-summary-btn').addEventListener('click', function() {
-            showSummaryMessage("{{ screening_summary_text | safe }}");
+            showMessage("{{ screening_summary_text | safe }}");
         });
 
         function showMessage(text) {
             var messageBox = document.getElementById('message-box');
             var message = document.getElementById('message');
+            var whiteBox = document.getElementById('white-box');
+
             message.innerHTML = text; // Use innerHTML to render HTML content
 
             if (messageBox.style.display === 'none') {
                 messageBox.style.display = 'block';
+                whiteBox.style.display = 'block';
             } else {
                 messageBox.style.display = 'none';
+                whiteBox.style.display = 'none';
             }
-        }
 
-        function showSummaryMessage(text) {
-            var summaryMessageBox = document.getElementById('summary-message-box');
-            summaryMessageBox.innerHTML = text; // Use innerHTML to render HTML content
-
-            if (summaryMessageBox.style.display === 'none') {
-                summaryMessageBox.style.display = 'block';
-            } else {
-                summaryMessageBox.style.display = 'none';
-            }
+            // Add white space below the grey box
+            messageBox.style.marginBottom = '30px';
         }
     </script>
+
+    <style>
+        .footer {
+            margin-top: 30px; /* Add margin above the footer */
+        }
+    </style>
 {% endblock %}
