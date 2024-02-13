@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DORA</title>
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='bupa.png') }}"> <!-- Favicon -->
+    <style>
+        body {
+            padding: 0;
+            font-family: 'Montserrat', sans-serif; /* Apply Montserrat font */
+            color: #0d1846; /* Body text color */
+        }
+        .header {
+            background-color: #0d1846;
+            color: white; /* Header text color */
+            padding: 10px;
+            display: flex; /* Use flexbox */
+            justify-content: space-between; /* Space evenly between items */
+            align-items: center; /* Align items vertically */
+        }
+        .toolbar {
+            background-color: #0d1846; /* Toolbar color */
+            color: white; /* Toolbar text color */
+            padding: 2.5px 5px; /* Reduced padding to reduce toolbar height */
+            display: flex; /* Use flexbox */
+            align-items: center; /* Align items vertically */
+        }
+        .toolbar a {
+            color: white; /* Link text color */
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
+        .footer {
+            background-color: #0d1846; /* Footer color */
+            color: white; /* Footer text color */
+            padding: 10px;
+            text-align: center; /* Align text to the center */
+            position: fixed;
+            bottom: 0;
+            right: 0; /* Align to the right */
+            width: 100%; /* Full width */
+        }
+
+        /* Button styling */
+        button {
+            background-color: #0079c8; /* Changed to #0079c8 */
+            border: none; /* Remove border */
+            color: white; /* White text */
+            padding: 8px 16px; /* 1/4 of the original size */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px; /* 1/4 of the original size */
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px; /* 1/2 of the original size */
+        }
+
+        /* Change the color of the button on hover */
+        button:hover {
+            background-color: #005fa3; /* Darker blue */
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"> <!-- Link to Montserrat font -->
+</head>
+<body>
+    <div class="header">
+        <div class="toolbar">
+            <a href="/">Bupa Blua</a> <!-- Changed the link text to 'Bupa Blua' -->
+        </div>
+        <img src="{{ url_for('static', filename='bupa.png') }}" class="logo" alt="Logo">
+    </div>
+    {% block content %}{% endblock %}
+    <div class="footer">
+        Created by Bupa @ Azure Factory 2024
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Welcome to Dora, your breast cancer hub</title>
+{% endblock %}
+
+{% block content %}
+    <div class="content" style="margin: 20px;">
+        <h1>Welcome to Dora, your breast cancer hub</h1>
+        <p>Dora is a comprehensive platform designed to support you in your breast cancer journey. Here, you can schedule appointments, access detailed information about breast cancer, and consult with a doctor using our enhanced AI service.</p>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <div class="box" style="background-color: #f1efeb; flex: 1; padding: 20px; border-radius: 5px; position: relative;">
+                <img src="{{ url_for('static', filename='magnifying-glass.svg') }}" alt="Magnifying Glass" style="width: 50px; position: absolute; top: 10px; left: 10px;">
+                <h2 style="margin-top: 60px;">Find out more information</h2>
+                <p style="margin-bottom: 100px;">The more you know, the more you can do. Explore our library of conditions, treatment and healthy living.</p>
+                <!-- Button at the bottom right -->
+                <a href="/information" style="position: absolute; bottom: 10px; right: 10px;">
+                    <button style="font-family: 'Montserrat', sans-serif; background-color: #0079c8; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Find Out More</button>
+                </a>
+            </div>
+            <div class="box" style="background-color: #f1efeb; flex: 1; padding: 20px; border-radius: 5px; margin-left: 10px; position: relative;">
+                <img src="{{ url_for('static', filename='heart-on-hands.svg') }}" alt="Heart on Hands" style="width: 50px; position: absolute; top: 10px; left: 10px;">
+                <h2 style="margin-top: 60px;">Schedule Appointment</h2>
+                <p style="margin-bottom: 100px;">You can schedule your appointment online right now.</p>
+                <!-- Button at the bottom right -->
+                <a href="/schedule-appointment" style="position: absolute; bottom: 10px; right: 10px;">
+                    <button style="font-family: 'Montserrat', sans-serif; background-color: #0079c8; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Schedule Appointment</button>
+                </a>
+            </div>
+            <div class="box" style="background-color: #f1efeb; flex: 1; padding: 20px; border-radius: 5px; margin-left: 10px; position: relative;">
+                <img src="{{ url_for('static', filename='hands.svg') }}" alt="Hands" style="width: 50px; position: absolute; top: 10px; left: 10px;">
+                <h2 style="margin-top: 60px;">Doctor AI</h2>
+                <p style="margin-bottom: 100px;">With our Doctor AI service, you get cutting-edge treatments and AI assistance to listen, understand, and summarize interactions with a doctor.</p>
+                <!-- Button at the bottom right -->
+                <a href="/doctor-ai" style="position: absolute; bottom: 10px; right: 10px;">
+                    <button style="font-family: 'Montserrat', sans-serif; background-color: #0079c8; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Doctor AI</button>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
